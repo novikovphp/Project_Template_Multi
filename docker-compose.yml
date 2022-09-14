@@ -5,16 +5,17 @@ services:
   php:
     build: ./dockerfiles/php
     volumes:
-      - './file:/var/www/html'
+      - './domains:/var/www/html'
     ports:
       - 9000:9000
+
 # Установка Nginx + подключение локальной папки + конфиг файл
   nginx:
     build: ./dockerfiles/nginx
     ports:
       - 80:80
     volumes:
-      - './file:/var/www/html'
+      - './domains:/var/www/html'
       - './file/docker/nginx/conf.d:/etc/nginx/conf.d'
       - './file/docker/nginx/sites-available:/etc/nginx/sites-available'
       - './file/docker/nginx/sites-enabled:/etc/nginx/sites-enabled'
@@ -43,4 +44,5 @@ services:
     environment:
       - PMA_HOST=mariadb
       - PMA_PORT=3306
+
 

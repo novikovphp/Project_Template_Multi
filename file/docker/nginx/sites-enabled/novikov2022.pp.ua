@@ -1,0 +1,1 @@
+/etc/nginx/sites-available/novikov2022.pp.ua
